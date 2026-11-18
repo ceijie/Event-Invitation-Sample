@@ -4,329 +4,587 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Invitation</title>
+<title>Elegant Event Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-    --bg:#120755;
-    --gold:#f6bf54;
-    --cream:#edeae4;
+--bg:#0d1036;
+--bg2:#151c60;
+--gold:#f6bf54;
+--white:#ffffff;
+--glass:rgba(255,255,255,.08);
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-    background:var(--bg);
-    color:white;
-    font-family:Arial, sans-serif;
+font-family:Poppins,sans-serif;
+background:var(--bg);
+color:white;
+overflow-x:hidden;
 }
 
-/* OPENING PAGE */
+/* PARTICLES */
 
-#opening{
-    position:fixed;
-    inset:0;
-    background:#120755;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-    text-align:center;
+#particles{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:0;
 }
 
-#opening h2{
-    color:var(--gold);
-    margin-bottom:20px;
-}
-
-.envelope{
-    font-size:120px;
-    animation:float 2s infinite ease-in-out;
+.particle{
+position:absolute;
+width:3px;
+height:3px;
+background:var(--gold);
+border-radius:50%;
+opacity:.4;
+animation:float 12s linear infinite;
 }
 
 @keyframes float{
-    50%{
-        transform:translateY(-12px);
-    }
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-100vh);
+}
+}
+
+/* OPENING SCREEN */
+
+#opening{
+position:fixed;
+inset:0;
+z-index:9999;
+background:
+linear-gradient(rgba(13,16,54,.95),
+rgba(13,16,54,.95));
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:1s;
+}
+
+.envelope{
+font-size:120px;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+50%{transform:translateY(-12px);}
 }
 
 .open-btn{
-    margin-top:20px;
-    background:var(--gold);
-    color:#120755;
-    border:none;
-    padding:15px 30px;
-    border-radius:30px;
-    font-weight:bold;
-    cursor:pointer;
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-weight:bold;
+background:var(--gold);
+color:black;
 }
 
-/* CONTENT */
+/* HERO */
 
 .hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-    background:
-    linear-gradient(
-      rgba(18,7,85,.65),
-      rgba(18,7,85,.85)
-    ),
-    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1400");
-    background-size:cover;
-    background-position:center;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+background:
+linear-gradient(rgba(0,0,0,.55),
+rgba(0,0,0,.65)),
+url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1800");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+.hero-content{
+z-index:3;
+padding:20px;
 }
 
 .hero h1{
-    font-size:70px;
-    color:var(--gold);
+font-family:"Cormorant Garamond",serif;
+font-size:90px;
+color:var(--gold);
 }
 
 .hero p{
-    font-size:22px;
+font-size:22px;
 }
+
+/* COUNTDOWN */
 
 .countdown{
-    margin-top:30px;
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-    justify-content:center;
+margin-top:30px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
 }
 
-.box{
-    background:rgba(255,255,255,.1);
-    padding:15px;
-    border-radius:15px;
-    min-width:90px;
+.count-box{
+background:var(--glass);
+backdrop-filter:blur(10px);
+padding:18px;
+border-radius:15px;
+width:100px;
 }
 
-.box span{
-    display:block;
-    font-size:28px;
-    font-weight:bold;
-    color:var(--gold);
+.count-box span{
+display:block;
+font-size:32px;
+color:var(--gold);
+font-weight:bold;
 }
 
 section{
-    max-width:900px;
-    margin:auto;
-    padding:80px 20px;
+padding:90px 20px;
+max-width:1100px;
+margin:auto;
+position:relative;
+z-index:2;
 }
 
-h2{
-    text-align:center;
-    color:var(--gold);
-    margin-bottom:30px;
+.section-title{
+font-size:42px;
+text-align:center;
+margin-bottom:35px;
+font-family:"Cormorant Garamond",serif;
+color:var(--gold);
 }
 
 .card{
-    background:rgba(255,255,255,.08);
-    padding:25px;
-    border-radius:20px;
+background:var(--glass);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(8px);
 }
 
 .btn{
-    display:inline-block;
-    background:var(--gold);
-    color:#120755;
-    text-decoration:none;
-    padding:14px 25px;
-    border-radius:40px;
-    font-weight:bold;
-    margin-top:20px;
+display:inline-block;
+margin-top:20px;
+padding:15px 25px;
+background:var(--gold);
+color:black;
+text-decoration:none;
+border-radius:40px;
+font-weight:bold;
 }
 
+/* TIMELINE */
+
+.timeline{
+position:relative;
+max-width:700px;
+margin:auto;
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+left:50%;
+top:0;
+width:3px;
+height:100%;
+background:var(--gold);
+}
+
+.event{
+background:var(--glass);
+padding:20px;
+margin:30px 0;
+width:45%;
+border-radius:15px;
+}
+
+.event:nth-child(odd){
+margin-right:auto;
+}
+
+.event:nth-child(even){
+margin-left:auto;
+}
+
+/* GALLERY */
+
 .gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:18px;
 }
 
 .gallery img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    border-radius:15px;
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:15px;
+cursor:pointer;
+transition:.3s;
 }
 
-footer{
-    text-align:center;
-    padding:50px 20px;
-    color:#aaa;
+.gallery img:hover{
+transform:scale(1.03);
 }
+
+#lightbox{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.9);
+z-index:99999;
+justify-content:center;
+align-items:center;
+}
+
+#lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:15px;
+}
+
+/* MAP */
+
+.map iframe{
+width:100%;
+height:420px;
+border:none;
+border-radius:20px;
+}
+
+/* FOOTER */
+
+footer{
+padding:60px;
+text-align:center;
+color:#aaa;
+}
+
+.fade{
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+
+.show{
+opacity:1;
+transform:none;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:60px;
+}
+
+.timeline::before{
+left:10px;
+}
+
+.event{
+width:100%;
+margin-left:25px !important;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<div id="particles"></div>
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
 <div id="opening">
-    <h2>You Are Invited!</h2>
-    <div class="envelope">✉️</div>
-    <button class="open-btn" onclick="openInvite()">
-        Open Invitation
-    </button>
+
+<div class="envelope">✉️</div>
+
+<h2 style="color:#f6bf54;margin-top:20px;">
+You Are Invited
+</h2>
+
+<button class="open-btn" onclick="openInvitation()">
+Open Invitation
+</button>
+
 </div>
 
 <section class="hero">
-    <p>You're Invited To</p>
-    <h1>OSWIN</h1>
-    <p>Birthday Celebration & Dedication</p>
 
-    <div class="countdown">
-        <div class="box">
-            <span id="days">0</span>
-            Days
-        </div>
+<div class="hero-content">
 
-        <div class="box">
-            <span id="hours">0</span>
-            Hours
-        </div>
+<p>Join Us For</p>
 
-        <div class="box">
-            <span id="minutes">0</span>
-            Minutes
-        </div>
+<h1>OSWIN</h1>
 
-        <div class="box">
-            <span id="seconds">0</span>
-            Seconds
-        </div>
-    </div>
+<p>Birthday Celebration & Dedication</p>
+
+<div class="countdown">
+
+<div class="count-box">
+<span id="days">0</span>
+Days
+</div>
+
+<div class="count-box">
+<span id="hours">0</span>
+Hours
+</div>
+
+<div class="count-box">
+<span id="minutes">0</span>
+Minutes
+</div>
+
+<div class="count-box">
+<span id="seconds">0</span>
+Seconds
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section>
-    <h2>Event Details</h2>
+<section class="fade">
 
-    <div class="card">
-        <p><strong>Date:</strong> December 12, 2026</p>
-        <br>
-        <p><strong>Time:</strong> 8:15 PM</p>
-        <br>
-        <p><strong>Venue:</strong> McDonald's Baesa</p>
-        <br>
+<h2 class="section-title">Event Details</h2>
 
-        <a
-        class="btn"
-        target="_blank"
-        href="https://maps.google.com">
-        Open Google Maps
-        </a>
-    </div>
+<div class="card">
+
+<p><b>Date:</b> December 12, 2026</p>
+<br>
+
+<p><b>Time:</b> 8:15 PM</p>
+<br>
+
+<p><b>Venue:</b> McDonald's Baesa</p>
+
+<a href="#map" class="btn">
+View Location
+</a>
+
+</div>
+
 </section>
 
-<section>
-    <h2>Dress Code</h2>
+<section class="fade">
 
-    <div class="card">
-        <p>❤️ Armored Red</p>
-        <br>
-        <p>⭐ Hero Gold</p>
-        <br>
-        <p>💙 Power Blue</p>
-        <br>
-        <p>🌌 Cosmic Navy</p>
-        <br>
-        <p>⚪ Stark Silver</p>
-    </div>
+<h2 class="section-title">Our Story</h2>
+
+<div class="timeline">
+
+<div class="event">
+<h3>2024</h3>
+<p>The beginning of a memorable journey.</p>
+</div>
+
+<div class="event">
+<h3>2025</h3>
+<p>Growing with family and friends.</p>
+</div>
+
+<div class="event">
+<h3>2026</h3>
+<p>Celebrating another wonderful milestone.</p>
+</div>
+
+</div>
+
 </section>
 
-<section>
-    <h2>Gallery</h2>
+<section class="fade">
 
-    <div class="gallery">
-        <img src="https://picsum.photos/500/600?1">
-        <img src="https://picsum.photos/500/600?2">
-        <img src="https://picsum.photos/500/600?3">
-        <img src="https://picsum.photos/500/600?4">
-    </div>
+<h2 class="section-title">Gallery</h2>
+
+<div class="gallery">
+
+<img src="https://picsum.photos/600/800?1">
+<img src="https://picsum.photos/600/800?2">
+<img src="https://picsum.photos/600/800?3">
+<img src="https://picsum.photos/600/800?4">
+<img src="https://picsum.photos/600/800?5">
+<img src="https://picsum.photos/600/800?6">
+
+</div>
+
 </section>
 
-<section>
-    <h2>Gift Guide</h2>
+<section class="fade" id="map">
 
-    <div class="card">
-        <p>
-            Your presence is already our greatest gift.
-        </p>
+<h2 class="section-title">
+Venue Location
+</h2>
 
-        <br>
+<div class="map">
 
-        <p>
-            But if you wish to bless Oswin,
-            a monetary gift would be appreciated.
-        </p>
-    </div>
+<iframe
+src="https://maps.google.com/maps?q=McDonalds%20Baesa&t=&z=15&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+</div>
+
 </section>
 
-<section>
-    <h2>RSVP</h2>
+<section class="fade">
 
-    <div class="card" style="text-align:center">
-        <p>
-            Kindly confirm your attendance.
-        </p>
+<h2 class="section-title">RSVP</h2>
 
-        <a
-        class="btn"
-        href="YOUR_GOOGLE_FORM_LINK"
-        target="_blank">
-        RSVP NOW
-        </a>
-    </div>
+<div class="card" style="text-align:center;">
+
+<p>Please confirm your attendance.</p>
+
+<a href="#" class="btn">
+RSVP NOW
+</a>
+
+</div>
+
 </section>
 
 <footer>
-    We can't wait to celebrate with you ❤️
+Made with ❤️ for a special celebration
 </footer>
+
+<div id="lightbox">
+<img id="lightbox-img">
+</div>
 
 <script>
 
-function openInvite(){
-    document.getElementById("opening").style.display="none";
+/* OPEN INVITE */
+
+function openInvitation(){
+
+document.getElementById('opening').style.opacity='0';
+
+document.getElementById('music')
+.play()
+.catch(()=>{});
+
+setTimeout(()=>{
+document.getElementById('opening').style.display='none';
+},1000);
+
 }
 
-const targetDate = new Date("December 12, 2026 20:15:00");
+/* COUNTDOWN */
 
-function updateCountdown(){
+const target = new Date(
+"December 12, 2026 20:15:00"
+);
 
-    const now = new Date();
-    const diff = targetDate - now;
+setInterval(()=>{
 
-    const days =
-      Math.floor(diff/(1000*60*60*24));
+let now=new Date();
+let diff=target-now;
 
-    const hours =
-      Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+let d=Math.floor(diff/1000/60/60/24);
+let h=Math.floor(diff%(1000*60*60*24)/(1000*60*60));
+let m=Math.floor(diff%(1000*60*60)/(1000*60));
+let s=Math.floor(diff%(1000*60)/1000);
 
-    const minutes =
-      Math.floor((diff%(1000*60*60))/(1000*60));
+document.getElementById("days").innerText=d;
+document.getElementById("hours").innerText=h;
+document.getElementById("minutes").innerText=m;
+document.getElementById("seconds").innerText=s;
 
-    const seconds =
-      Math.floor((diff%(1000*60))/1000);
+},1000);
 
-    document.getElementById("days").textContent=days;
-    document.getElementById("hours").textContent=hours;
-    document.getElementById("minutes").textContent=minutes;
-    document.getElementById("seconds").textContent=seconds;
+/* PARTICLES */
+
+for(let i=0;i<80;i++){
+
+let p=document.createElement("div");
+
+p.classList.add("particle");
+
+p.style.left=Math.random()*100+"%";
+
+p.style.animationDuration=
+(Math.random()*10+8)+"s";
+
+p.style.opacity=Math.random();
+
+document
+.getElementById("particles")
+.appendChild(p);
+
 }
 
-setInterval(updateCountdown,1000);
-updateCountdown();
+/* SCROLL ANIMATION */
+
+const observer=
+new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{threshold:.15});
+
+document
+.querySelectorAll(".fade")
+.forEach(el=>observer.observe(el));
+
+/* LIGHTBOX */
+
+const images=
+document.querySelectorAll(".gallery img");
+
+const box=
+document.getElementById("lightbox");
+
+const boxImg=
+document.getElementById("lightbox-img");
+
+images.forEach(img=>{
+
+img.onclick=()=>{
+
+box.style.display="flex";
+
+boxImg.src=img.src;
+
+};
+
+});
+
+box.onclick=()=>{
+
+box.style.display="none";
+
+};
 
 </script>
 
